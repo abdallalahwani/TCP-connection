@@ -1,3 +1,4 @@
+#define _POSIX_C_SOURCE 200809
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -28,7 +29,7 @@ ssize_t write_all(int fd, const void *buf, size_t count) {
 
 int main(int argc, char *argv[]) {
     if (argc != 4) {
-        fprintf(stderr, "Usage: %s <server_ip> <port> <file_path>\n", argv[0]);
+        fprintf(stderr, "Usage: %s <server_ip> <port> <file_path>\n", argv[0]); 
         exit(1);
     }
 
@@ -38,13 +39,13 @@ int main(int argc, char *argv[]) {
 
     int file_fd = open(file_path, O_RDONLY);
     if (file_fd < 0) {
-        perror("open");
+        perror("error openening the file");
         exit(1);
     }
 
     struct stat st;
     if (fstat(file_fd, &st) < 0) {
-        perror("fstat");
+        perror("fstat error");
         exit(1);
     }
 
@@ -56,7 +57,7 @@ int main(int argc, char *argv[]) {
 
     int sockfd = socket(AF_INET, SOCK_STREAM, 0);
     if (sockfd < 0) {
-        perror("socket");
+        perror("socket creation failed"); 
         exit(1);
     }
 

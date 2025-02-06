@@ -1,12 +1,13 @@
+#define _POSIX_C_SOURCE 200809
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <signal.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
 #include <string.h>
 #include <errno.h>
+#include <signal.h>
 
 #define BUFFER_SIZE 1048576 // 1MB
 #define PRINTABLE_START 32
@@ -106,7 +107,7 @@ int main(int argc, char *argv[]) {
     struct sigaction sa;
     sa.sa_handler = sigint_handler;
     sigemptyset(&sa.sa_mask);
-    sa.sa_flags = SA_RESTART;
+    sa.sa_flags = 0; 
     if (sigaction(SIGINT, &sa, NULL) < 0) {
         perror("sigaction");
         exit(1);

@@ -9,10 +9,10 @@
 
 #define SERVER_PORT 9999
 #define SERVER_IP "127.0.0.1"
-#define TEST_FILE "test_file.txt"
-#define LARGE_TEST_FILE "large_test_file.txt"
-#define PRINTABLE_ONLY_FILE "printable_only_file.txt"
-#define NON_PRINTABLE_ONLY_FILE "non_printable_only_file.txt"
+#define TEST_FILE "./run_tests/test_file.txt"
+#define LARGE_TEST_FILE "./run_tests/large_test_file.txt"
+#define PRINTABLE_ONLY_FILE "./run_tests/printable_only_file.txt"
+#define NON_PRINTABLE_ONLY_FILE "./run_tests/non_printable_only_file.txt"
 
 void create_test_file(const char* filename, int size, int printable_ratio) {
     FILE* file = fopen(filename, "w");
