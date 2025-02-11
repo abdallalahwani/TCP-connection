@@ -1,2 +1,0 @@
-Hello, this is a test file for sending data through a socket.
-It contains some sample text data.
